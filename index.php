@@ -49,47 +49,35 @@ $hotels = [
 
     ];
     ?>
+    
+    <!-- stampare a schermo la lista degli hotel -->
+     <!-- <?php
+//    var_dump($hotels);
+   ?>  -->
 
-   <table class="table table-dark">
-    <thead>
-      <tr>
-        <th scope="col">#</th>
-        <?php
-            //Stampa ogni chiave del primo elemento nell'array hotels
-            foreach ($hotels[0] as $key => $value) {               
-                echo "<th scope='col'>" . $key . "</th>";
-            };
-        ?>  
-      </tr>
-    </thead>
-    <tbody>
-    <?php
-                // Per ogni hotel nella lista
-                foreach ($hotels as $k => $hotel) {
-                    // Crea una riga della colonna
-                    echo "<tr>";
-                    // Ed aumenta il valore ciclato 'k' di 1
-                    echo "<th scope='row'>" . $k . "</th>";
-                    // Per ogni hotel nella lista
-                    foreach ($hotel as $key => $value) {
-                        // Se alla chiave parking è assegnato valore true
-                        if ($key == 'parking' && $value == true) {
-                            // Sostituisco quel valore con una spunta
-                            $value = '&#x2713;';
-                        }
-                        // Se alla chiave parking è assegnato valore false
-                        else if ($key == 'parking' && $value == false){
-                            // Sostituisco quel valore con una X
-                            $value = '&#10005;';
-                        }
-                        echo "<td>" . $value . "</td>";
-                    }
-                    echo "</tr>";
-                }
+    <table border="1px">
+        <thead>
+            <tr>
+                <th>Nome</th>
+                <th>Descrizione</th>
+                <th>Parcheggio</th>
+                <th>Voto</th>
+                <th>Distanza dal centro</th>
+            </tr>
+        </thead>
+        <tbody>
+            <?php
+            foreach($hotels as $hotel){
+                echo '<tr>';
+                echo '<td>' . $hotel['name'] . '</td>';
+                echo '<td>' . $hotel['description'] . '</td>';
+                echo '<td>' . ($hotel['parking'] ? 'yes' : 'no') . '</td>';
+                echo '<td>' . $hotel['vote'] . '/5</td>';
+                echo '<td>' . $hotel['distance_to_center'] . 'km</td>';
+            }
             ?>
-    </tbody>
-  </table> 
-
+        </tbody>
+    </table>
     
 
 
